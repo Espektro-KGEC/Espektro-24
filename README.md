@@ -59,7 +59,7 @@ Following are the steps to guide you:
 
 We want your work to be readable by others; therefore, we encourage you to note the following:
 
-- Strictly use snake_case (underscore_separated) in your file_name, as it will be easy to parse in future using scripts.
+- Try to use camelCase in your file name, as it will be easy to parse in future using scripts.
 - Please avoid creating new directories if at all possible. Try to fit your work into the existing directory structure you have created for your project. If you want to,
 please contact before doing so.
 - The files should be concise and clear about what the script is about and what it does.
