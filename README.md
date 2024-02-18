@@ -67,7 +67,36 @@ please contact before doing so.
 - If you have modified/added code work, make sure that code works before submitting.
 - If you have modified/added documentation work, ensure your language is concise and contains no grammar errors.
 - Do not update the [README.md](https://github.com/Espektro-KGEC/Espektro-24/blob/main/README.md) 
+  
 
+### Commit message format
+
+Specify the type of commit:
+
+- feat: The new feature you're adding to a particular application
+- fix: A bug fix
+- style: Feature and updates related to styling
+- refactor: Refactoring a specific section of the codebase
+- perf – improves code performance
+- test: Everything related to testing
+- docs: Everything related to documentation
+- chore: Regular code maintenance.
+
+
+### Folder Structure
+
+```
+├───design ( All figma designs will be updated here)
+├───public
+└───src
+    ├───api
+    ├───assets ( All images and required assests will be updated here)
+    ├───components-global ( Specifically for global components like Loader, Navbar etc.)
+    └───screens ( All screens will be updated here )
+        ├───EventsScreen ( Example of one screen )
+        │   └───components ( Required components related to particular screen )
+       
+```
 
 ## Need more help?
 
