@@ -1,0 +1,77 @@
+@import url('https://fonts.cdnfonts.com/css/nasalization');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nasalization Rg', sans-serif;
+}
+
+.main{
+    
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    
+    height: 100vh;
+    width: 100%;
+    color: white;
+    background-image: url("../../../design/events/events-background.jpg");
+.events{
+    margin: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    header{
+        font-size: 40px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    header::before{
+        position: absolute;
+        content: "";
+        background-color: pink;
+        border-radius:5px;
+        bottom: -10%;
+        width: 50%;
+        height: 5px;
+    }
+    section{
+        width: 100%;
+        margin: 2rem 5%;
+    
+        h1{
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin: 2rem 0;
+        }
+        .event{
+            h2{
+                margin: 1rem 0;
+                text-transform: capitalize;
+                }
+                main{
+                    width: 100%;
+                    flex: 1;
+                    cursor: pointer;
+                    display: flex;
+                    gap: 2.5rem;
+                    overflow-x:auto ;
+                    
+    
+                    &::-webkit-scrollbar{
+                        display: none;
+                    }
+                }
+        }
+       
+    
+    
+    
+    } 
+    
+}
+
+}

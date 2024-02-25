@@ -1,13 +1,14 @@
 
 import './App.css'
+import EventsPage from './screens/EventsScreen/EventsPage'
 
 function App() {
   
 
   return (
     <>
-      {/* events */}
-      events
+  
+    <EventsPage/>
     </>
   )
 }
