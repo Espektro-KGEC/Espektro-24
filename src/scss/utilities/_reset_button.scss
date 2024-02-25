@@ -1,0 +1,18 @@
+button,
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  white-space: normal;
+}

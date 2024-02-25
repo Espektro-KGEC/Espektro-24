@@ -1,16 +1,21 @@
+import { FunctionComponent } from 'react';
 
-import './App.css'
-import EventsPage from './screens/EventsScreen/EventsPage'
+import {
+  Route,
+  Routes,
+} from 'react-router';
 
-function App() {
-  
+import Layout from '@components/PageLayout/Layout';
 
+const App: FunctionComponent = () => {
   return (
-    <>
-  
-    <EventsPage/>
-    </>
-  )
-}
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<div>Home</div>} />
+        <Route path="about" element={<div>About</div>} />
+      </Route>
+    </Routes>
+  );
+};
 
-export default App
+export default App;
