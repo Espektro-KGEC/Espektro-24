@@ -7,9 +7,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# ignoring to prevent any clashes with npm
-pnpm-lock.yaml 
-
 .env
 node_modules
 dist
