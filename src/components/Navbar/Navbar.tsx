@@ -28,7 +28,7 @@ const links = [
   {
     id: 5,
     label: 'Events',
-    href: '#',
+    href: '/events',
   },
   {
     id: 6,
