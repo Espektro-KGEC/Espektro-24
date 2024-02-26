@@ -1,8 +1,8 @@
 import React from "react";
-import styles from './styles.module.scss';
+import Preloadpage from "./Preloadanim";
 
 const LandingPage: React.FC = () => {
-  return <div className={`${styles.landingContainer}`}>Landing Page</div>;
+  return <div><Preloadpage/></div>;
 };
 
 export default LandingPage;
