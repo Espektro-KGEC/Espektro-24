@@ -22,8 +22,8 @@ const links = [
   },
   {
     id: 3,
-    label: 'Statistics',
-    href: '#',
+    label: 'Theme',
+    href: '/theme',
   },
   {
     id: 5,
@@ -37,18 +37,18 @@ const links = [
   },
   {
     id: 8,
-    label: 'Sponsors',
-    href: '#',
+    label: 'Gallery',
+    href: '/gallery',
   },
   {
     id: 7,
     label: 'Merchandise',
-    href: '#',
+    href: '/merchandise',
   },
   {
     id: 4,
-    label: 'Clubs',
-    href: '#',
+    label: 'Contact',
+    href: '/contact',
   },
 ];
 function Navigation() {
