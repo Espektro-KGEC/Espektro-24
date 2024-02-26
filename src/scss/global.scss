@@ -1,0 +1,25 @@
+@import 'reset';
+@import 'breakpoints';
+@import 'colors';
+
+/**
+ * importing utilities
+ */
+@import 'utilities/reset_button';
+
+
+:root {
+  --font-size-heading: 2rem;
+  --font-size-sub-heading: 1.5rem;
+  --font-size-paragraph: 1rem;
+  --font-size-small: 0.8rem;
+}
+
+@media (min-width: 375px) {
+  :root {
+    --font-size-heading: 2rem;
+    --font-size-sub-heading: 1.5rem;
+    --font-size-paragraph: 1rem;
+    --font-size-small: 0.8rem;
+  }
+}
