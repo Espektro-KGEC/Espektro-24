@@ -13,12 +13,12 @@ const links = [
   {
     id: 1,
     label: 'Home',
-    href: '#',
+    href: '/',
   },
   {
     id: 2,
     label: 'About',
-    href: '#',
+    href: '/about',
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const links = [
   {
     id: 6,
     label: 'Artists',
-    href: '#',
+    href: '/artists',
   },
   {
     id: 8,
