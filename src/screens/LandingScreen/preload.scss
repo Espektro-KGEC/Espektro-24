@@ -1,0 +1,41 @@
+.blackscreen1 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  
+    background-color: black; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    z-index: 10; 
+}
+
+.logo1 {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 30%; 
+    height: auto; 
+    z-index: 20; 
+    @media only screen and (max-width: 768px) {
+        width: 70%;
+    }
+
+    @media only screen and (max-width: 400px) {
+        width: 70%;
+    }
+    @media only screen and (max-width: 1000px) {
+        width: 40%; 
+    }
+    @media only screen and (max-width: 768px) {
+        width: 30%; 
+    }
+    @media only screen and (max-width: 380px) {
+        width: 80%;
+    }
+   
+}
+
