@@ -4,6 +4,7 @@
   --slide-height: 20rem;
   --slide-spacing: 0rem;
   --slide-size: 25%;
+  --slide-size-sm: 50%;
 }
 .embla__viewport {
   overflow: hidden;
@@ -31,6 +32,13 @@
   object-fit: cover;
   /* width: 100%; */
 }
+
+@media (max-width: 768px) {
+  .embla__slide {
+    flex: 0 0 var(--slide-size-sm);
+  }
+}
+
 .embla__controls {
   display: grid;
   grid-template-columns: auto 1fr;

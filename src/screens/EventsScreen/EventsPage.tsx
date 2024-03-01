@@ -22,35 +22,82 @@ function EventsPage() {
     Quixine: 0,
   });
   const [activeDay, setActiveDay] = useState(0);
+  const [open, setOpen] = useState(false);
   console.log("activeIndex", activeIndex);
 
   return (
     // fade in the background image on slide change
     <div>
-      <section className="day-tabs flex justify-center gap-1 md:gap-4 fixed top-24 items-center w-full z-10">
-        {Object.keys(events).map((day, index) => (
+      <section className="flex rounded-full gap-1 md:gap-4 w-full fixed top-24 left-8 z-10">
+        <p className="flex text-xs lg:text-base flex-col lg:leading-none md:gap-4 text-zinc-50">
+          <span>D</span>
+          <span>A</span>
+          <span>Y</span>
+        </p>
+        <div className="flex-col gap-1 md:gap-4 z-10 hidden lg:flex">
+          {Object.keys(events).map((day, index) => (
+            <button
+              key={day}
+              onClick={() => {
+                setActiveDay(index);
+                setActiveIndex({
+                  Exotica: 0,
+                  Techtix: 0,
+                  Quixine: 0,
+                });
+              }}
+              className={`text-base font-bold py-3 md:py-1 px-4 rounded-lg ${
+                index === activeDay ? "bg-zinc-50" : "bg-zinc-400"
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+        <div className="flex-col gap-1 md:gap-4 z-10 lg:hidden">
           <button
-            key={day}
             onClick={() => {
-              setActiveDay(index);
-              setActiveIndex({
-                Exotica: 0,
-                Techtix: 0,
-                Quixine: 0,
-              });
+              setOpen(!open);
+              // // setActiveDay(0);
+              // setActiveIndex({
+              //   Exotica: 0,
+              //   Techtix: 0,
+              //   Quixine: 0,
+              // });
             }}
-            className={`text-base font-bold py-3 md:py-1 px-4 rounded-lg ${
-              index === activeDay ? "bg-zinc-50" : "bg-zinc-50/50"
-            }`}
+            className="text-base font-bold py-3 md:py-1 px-4 rounded-lg bg-zinc-50"
           >
-            Day {index}
+            {activeDay + 1}
           </button>
-        ))}
+          {open && (
+            <div className="flex mt-1 flex-col gap-1 md:gap-4 z-10">
+              {Object.keys(events)
+                .filter((day) => Number(day) !== activeDay)
+                .map((day) => (
+                  <button
+                    key={day}
+                    onClick={() => {
+                      setActiveDay(Number(day));
+                      setActiveIndex({
+                        Exotica: 0,
+                        Techtix: 0,
+                        Quixine: 0,
+                      });
+                      setOpen(false);
+                    }}
+                    className={`text-base font-bold py-3 md:py-1 px-4 rounded-lg bg-zinc-400`}
+                  >
+                    {Number(day) + 1}
+                  </button>
+                ))}
+            </div>
+          )}
+        </div>
       </section>
       {Object.keys(events[activeDay]).map((cat, index) => (
         <motion.section
           key={index}
-          className="min-h-screen min-w-screen bg-zinc-900 flex flex-col justify-center gap-8 items-center p-8"
+          className="min-h-screen min-w-screen bg-zinc-900 flex flex-col justify-center z-0 gap-8 items-center p-8"
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url(https://picsum.photos/500/650?v=${
               activeIndex[cat as Categories]
@@ -73,12 +120,15 @@ function EventsPage() {
             {cat.toUpperCase()}
           </h1>
           <div
-            className={cn("flex flex-col-reverse md:flex-row justify-between px-0 md:px-32 md:items-center w-full", {
-              "md:flex-row-reverse": index % 2 !== 0,
-            })}
+            className={cn(
+              "flex flex-col md:flex-row justify-between px-0 md:px-32 md:items-center w-full",
+              {
+                "md:flex-row-reverse": index % 2 !== 0,
+              }
+            )}
           >
-            <section className="py-5">
-              <h2 className="text-white text-5xl">
+            <section className="py-5 z-0">
+              <h2 className="text-white text-5xl z-0">
                 {
                   events[activeDay][cat as Categories][
                     activeIndex[cat as Categories]

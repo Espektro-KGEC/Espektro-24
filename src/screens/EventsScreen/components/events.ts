@@ -302,62 +302,6 @@ const events: Record<number, Record<Categories, Array<CategoryEvent>>> = {
       },
     ],
   },
-  4: {
-    "Exotica": [
-      {
-        name: "d4c1event1",
-        description: "d4c1event1 description",
-      },
-      {
-        name: "d4c1event2",
-        description: "d4c1event2 description",
-      },
-      {
-        name: "d4c1event3",
-        description: "d4c1event3 description",
-      },
-      {
-        name: "d4c1event4",
-        description: "d4c1event4 description",
-      },
-    ],
-    "Techtix": [
-      {
-        name: "d4c2event1",
-        description: "d4c2event1 description",
-      },
-      {
-        name: "d4c2event2",
-        description: "d4c2event2 description",
-      },
-      {
-        name: "d4c2event3",
-        description: "d4c2event3 description",
-      },
-      {
-        name: "d4c2event4",
-        description: "d4c2event4 description",
-      },
-    ],
-    "Quixine": [
-      {
-        name: "d4c3event1",
-        description: "d4c3event1 description",
-      },
-      {
-        name: "d4c3event2",
-        description: "d4c3event2 description",
-      },
-      {
-        name: "d4c3event3",
-        description: "d4c3event3 description",
-      },
-      {
-        name: "d4c3event4",
-        description: "d4c3event4 description",
-      },
-    ],
-  },
 };
 
 export default events;
