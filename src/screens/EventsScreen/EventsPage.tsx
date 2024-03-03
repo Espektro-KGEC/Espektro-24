@@ -2,6 +2,7 @@ import { useState } from "react";
 import EmblaCarousel from "./components/Carousel";
 import { EmblaOptionsType } from "embla-carousel";
 import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 import events from "./components/events";
 import type { Categories } from "./components/events";
@@ -28,15 +29,15 @@ function EventsPage() {
   return (
     // fade in the background image on slide change
     <div>
-      <section className="flex rounded-full gap-1 md:gap-4 w-full fixed top-24 left-8 z-10">
-        <p className="flex text-xs lg:text-base flex-col lg:leading-none md:gap-4 text-zinc-50">
+      <section className="flex gap-1 md:gap-4 w-full fixed top-24 left-8 z-10">
+        <p className="flex text-sm lg:text-base flex-col lg:leading-none md:gap-3 text-zinc-50">
           <span>D</span>
           <span>A</span>
           <span>Y</span>
         </p>
         <div className="flex-col gap-1 md:gap-4 z-10 hidden lg:flex">
           {Object.keys(events).map((day, index) => (
-            <button
+            <motion.button
               key={day}
               onClick={() => {
                 setActiveDay(index);
@@ -46,16 +47,17 @@ function EventsPage() {
                   Quixine: 0,
                 });
               }}
-              className={`text-base font-bold py-3 md:py-1 px-4 rounded-lg ${
+              whileTap={{ scale: 0.93 }}
+              className={`text-base font-bold p-2 px-3 leading-none rounded border-b-8 border-r-2 border-white ${
                 index === activeDay ? "bg-zinc-50" : "bg-zinc-400"
               }`}
             >
               {index + 1}
-            </button>
+            </motion.button>
           ))}
         </div>
-        <div className="flex-col gap-1 md:gap-4 z-10 lg:hidden">
-          <button
+        <div className="flex-col self-center gap-1 md:gap-4 z-10 lg:hidden">
+          <motion.button
             onClick={() => {
               setOpen(!open);
               // // setActiveDay(0);
@@ -65,39 +67,49 @@ function EventsPage() {
               //   Quixine: 0,
               // });
             }}
-            className="text-base font-bold py-3 md:py-1 px-4 rounded-lg bg-zinc-50"
+            whileTap={{ scale: 0.93 }}
+            className="text-base font-bold p-3 px-4 bg-zinc-50 rounded leading-none"
           >
             {activeDay + 1}
-          </button>
-          {open && (
-            <div className="flex mt-1 flex-col gap-1 md:gap-4 z-10">
-              {Object.keys(events)
-                .filter((day) => Number(day) !== activeDay)
-                .map((day) => (
-                  <button
-                    key={day}
-                    onClick={() => {
-                      setActiveDay(Number(day));
-                      setActiveIndex({
-                        Exotica: 0,
-                        Techtix: 0,
-                        Quixine: 0,
-                      });
-                      setOpen(false);
-                    }}
-                    className={`text-base font-bold py-3 md:py-1 px-4 rounded-lg bg-zinc-400`}
-                  >
-                    {Number(day) + 1}
-                  </button>
-                ))}
-            </div>
-          )}
+          </motion.button>
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="flex mt-1 flex-col gap-1 md:gap-4 z-10"
+              >
+                {Object.keys(events)
+                  .filter((day) => Number(day) !== activeDay)
+                  .map((day) => (
+                    <motion.button
+                      key={day}
+                      onClick={() => {
+                        setActiveDay(Number(day));
+                        setActiveIndex({
+                          Exotica: 0,
+                          Techtix: 0,
+                          Quixine: 0,
+                        });
+                        setOpen(false);
+                      }}
+                      whileTap={{ scale: 0.93 }}
+                      className={`text-base font-bold p-3 px-4 rounded bg-zinc-400 leading-none`}
+                    >
+                      {Number(day) + 1}
+                    </motion.button>
+                  ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
       {Object.keys(events[activeDay]).map((cat, index) => (
         <motion.section
           key={index}
-          className="min-h-screen min-w-screen bg-zinc-900 flex flex-col justify-center z-0 gap-8 items-center p-8"
+          className="min-h-screen min-w-screen bg-zinc-900 flex flex-col justify-between z-0 gap-8 items-center p-8"
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url(https://picsum.photos/500/650?v=${
               activeIndex[cat as Categories]
@@ -116,15 +128,12 @@ function EventsPage() {
           }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
-          <h1 className="text-4xl md:py-24 font-bold text-white">
-            {cat.toUpperCase()}
+          <h1 className="text-4xl lg:text-6xl font-light italic text-white mt-24">
+            {cat}
           </h1>
           <div
             className={cn(
-              "flex flex-col md:flex-row justify-between px-0 md:px-32 md:items-center w-full",
-              {
-                "md:flex-row-reverse": index % 2 !== 0,
-              }
+              "flex flex-col md:flex-row justify-between h-full md:items-center w-full"
             )}
           >
             <section className="py-5 z-0">
@@ -143,7 +152,12 @@ function EventsPage() {
                 }
               </p>
             </section>
-            <section className="carousel-container max-w-[650px] bg-transparent backdrop-blur-2xl rounded-2xl border border-zinc-50/10 py-10">
+            {/* add blurry effests to left and right of the carousel */}
+            <section
+              className="carousel-container self-end max-w-[650px] bg-transparent backdrop-filter backdrop-blur-2xl rounded-2xl py-10
+            
+            "
+            >
               <EmblaCarousel
                 slides={events[activeDay][cat as Categories]}
                 options={OPTIONS}
