@@ -9,13 +9,14 @@ import Layout from '@components/PageLayout/Layout';
 import EventsPage from './screens/EventsScreen/EventsPage';
 import LandingPage from './screens/LandingScreen/LandingPage';
 import ComingSoon from './components/ComingSoon/ComingSoon';
+import AboutPage from './screens/AboutScreen/AboutPage';
 
 const App: FunctionComponent = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<LandingPage />} />
-        <Route path="/about" element={<ComingSoon/>} />
+        <Route path="/about" element={<AboutPage/>} />
         <Route path="/theme" element={<ComingSoon/>} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/artists" element={<ComingSoon />} /> 

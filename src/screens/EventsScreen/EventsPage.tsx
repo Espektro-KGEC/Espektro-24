@@ -22,94 +22,21 @@ function EventsPage() {
     Techtix: 0,
     Quixine: 0,
   });
-  const [activeDay, setActiveDay] = useState(0);
-  const [open, setOpen] = useState(false);
-  console.log("activeIndex", activeIndex);
+  const [activeDays, setActiveDays] = useState<Record<Categories, number>>({
+    Techtix: 0,
+    Quixine: 0,
+    Exotica: 0,
+  });
+  // // const [open, setOpen] = useState(false);
+  // console.log("activeIndex", activeIndex);
 
   return (
     // fade in the background image on slide change
     <div>
-      <section className="flex gap-1 md:gap-4 w-full fixed top-24 left-8 z-10">
-        <p className="flex text-sm lg:text-base flex-col lg:leading-none md:gap-3 text-zinc-50">
-          <span>D</span>
-          <span>A</span>
-          <span>Y</span>
-        </p>
-        <div className="flex-col gap-1 md:gap-4 z-10 hidden lg:flex">
-          {Object.keys(events).map((day, index) => (
-            <motion.button
-              key={day}
-              onClick={() => {
-                setActiveDay(index);
-                setActiveIndex({
-                  Exotica: 0,
-                  Techtix: 0,
-                  Quixine: 0,
-                });
-              }}
-              whileTap={{ scale: 0.93 }}
-              className={`text-base font-bold p-2 px-3 leading-none rounded border-b-8 border-r-2 border-white ${
-                index === activeDay ? "bg-zinc-50" : "bg-zinc-400"
-              }`}
-            >
-              {index + 1}
-            </motion.button>
-          ))}
-        </div>
-        <div className="flex-col self-center gap-1 md:gap-4 z-10 lg:hidden">
-          <motion.button
-            onClick={() => {
-              setOpen(!open);
-              // // setActiveDay(0);
-              // setActiveIndex({
-              //   Exotica: 0,
-              //   Techtix: 0,
-              //   Quixine: 0,
-              // });
-            }}
-            whileTap={{ scale: 0.93 }}
-            className="text-base font-bold p-3 px-4 bg-zinc-50 rounded leading-none"
-          >
-            {activeDay + 1}
-          </motion.button>
-          <AnimatePresence>
-            {open && (
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="flex mt-1 flex-col gap-1 md:gap-4 z-10"
-              >
-                {Object.keys(events)
-                  .filter((day) => Number(day) !== activeDay)
-                  .map((day) => (
-                    <motion.button
-                      key={day}
-                      onClick={() => {
-                        setActiveDay(Number(day));
-                        setActiveIndex({
-                          Exotica: 0,
-                          Techtix: 0,
-                          Quixine: 0,
-                        });
-                        setOpen(false);
-                      }}
-                      whileTap={{ scale: 0.93 }}
-                      className={`text-base font-bold p-3 px-4 rounded bg-zinc-400 leading-none`}
-                    >
-                      {Number(day) + 1}
-                    </motion.button>
-                  ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </section>
-      {Object.keys(events[activeDay]).map((cat, index) => (
+      {Object.keys(events).map((cat, index) => (
         <motion.section
           key={index}
-          className="min-h-screen min-w-screen bg-zinc-900 flex flex-col justify-between z-0 gap-8 items-center p-8"
+          className="min-h-screen font-cab min-w-screen bg-zinc-900 flex flex-col justify-between z-0 gap-8 items-center p-8"
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url(https://picsum.photos/500/650?v=${
               activeIndex[cat as Categories]
@@ -128,43 +55,100 @@ function EventsPage() {
           }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
-          <h1 className="text-4xl lg:text-6xl font-light italic text-white mt-24">
-            {cat}
-          </h1>
-          <div
-            className={cn(
-              "flex flex-col md:flex-row justify-between h-full md:items-center w-full"
-            )}
-          >
-            <section className="py-5 z-0">
-              <h2 className="text-white text-5xl z-0">
+          <div className="flex flex-col lg:flex-row w-full lg:items-center justify-between mt-20 gap-4">
+            <h1 className="text-5xl lg:text-7xl text-zinc-100 font-zina">
+              {cat}
+            </h1>
+            {/* add a separating line between the title and the tabs */}
+            <div className="h-[1.5px] w-full bg-zinc-50/20 hidden lg:block"></div>
+            {/* day toggle tabs */}
+            <div className="flex gap-4 lg:ml-auto">
+              {Object.keys(events[cat as Categories]).map((day, index) => (
+                <button
+                  key={index}
+                  className={cn(
+                    "text-base bg-zinc-50/20 rounded-full px-3 py-1 lg:px-5 lg:py-2 md:px-4 md:py-2 min-w-max text-white",
+                    activeDays[cat as Categories] === index
+                      ? "bg-zinc-50/40"
+                      : ""
+                  )}
+                  onClick={() => {
+                    setActiveDays((prev) => ({
+                      ...prev,
+                      [cat]: index,
+                    }));
+                    setActiveIndex((prev) => ({
+                      ...prev,
+                      [cat]: 0,
+                    }));
+                  }}
+                >
+                  Day {day}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="h-[1.5px] w-full bg-zinc-50/20 lg:hidden block"></div>
+          <div className="flex flex-col md:flex-row justify-between h-full w-full gap-8">
+            <section className="z-0 flex flex-col gap-4 min-h-full">
+              <h2 className="text-white font-bold text-5xl z-0">
+                Event{" "}
                 {
-                  events[activeDay][cat as Categories][
+                  events[cat as Categories][activeDays[cat as Categories]][
                     activeIndex[cat as Categories]
                   ].name
                 }
               </h2>
-              <p className="text-white text-lg">
+              <div className="flex gap-2">
+                <p className="text-white text-sm bg-zinc-50/20 rounded-full px-3 py-1 md:px-4 md:py-1.5 flex items-center min-w-max">
+                  Label 1
+                </p>
+                <p className="text-white text-sm bg-zinc-50/20 rounded-full px-3 py-1 md:px-4 md:py-1.5 flex items-center min-w-max">
+                  {" "}
+                  Label 2
+                </p>
+                <p className="text-white text-sm bg-zinc-50/20 rounded-full px-3 py-1 md:px-4 md:py-1.5 flex items-center min-w-max">
+                  Label 3
+                </p>
+                <p className="text-white text-sm bg-zinc-50/20 rounded-full px-3 py-1 md:px-4 md:py-1.5 flex items-center min-w-max">
+                  Label 4
+                </p>
+              </div>
+              <p className="text-white text-base text-balance">
                 {
-                  events[activeDay][cat as Categories][
+                  events[cat as Categories][activeDays[cat as Categories]][
                     activeIndex[cat as Categories]
                   ].description
-                }
+                }{" "}
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat
+                perspiciatis esse eum? Maxime velit sint architecto repudiandae
+                debitis! Odit dolore fuga, cum iste veniam labore aspernatur
+                voluptatibus numquam ab quidem.
               </p>
+              <div className="flex gap-4 items-center">
+                <button className="bg-purple-400 rounded-lg px-4 py-2 min-w-max">
+                  Button1
+                </button>
+                <button className="bg-zinc-400 rounded-lg px-4 py-2 min-w-max">
+                  Button2
+                </button>
+              </div>
             </section>
             {/* add blurry effests to left and right of the carousel */}
             <section
-              className="carousel-container self-end max-w-[650px] bg-transparent backdrop-filter backdrop-blur-2xl rounded-2xl py-10
+              className="carousel-container min-h-full self-end max-w-[650px] lg:min-w-[650px] bg-zinc-50/5 backdrop-filter backdrop-blur-[50px] rounded-2xl py-10
             
             "
             >
               <EmblaCarousel
-                slides={events[activeDay][cat as Categories]}
+                slides={
+                  events[cat as Categories][activeDays[cat as Categories]]
+                }
                 options={OPTIONS}
                 setActiveIndex={(index) => {
                   setActiveIndex((prev) => ({
                     ...prev,
-                    [cat]: index,
+                    [cat as Categories]: index,
                   }));
                 }}
               />

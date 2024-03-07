@@ -1,3 +1,5 @@
+@import url("https://api.fontshare.com/v2/css?f[]=zina@400&f[]=cabinet-grotesk@800,500,700,400,300,200,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,4 +28,12 @@
     --font-size-paragraph: 1rem;
     --font-size-small: 0.8rem;
   }
+}
+
+#root {
+  @apply min-h-screen;
+}
+
+.mainBox {
+  @apply min-h-screen;
 }
