@@ -74,3 +74,43 @@ $breakpoints: (
     @content;
   }
 }
+
+@mixin applyRepeatStyle($breakpoint) {
+  @if $breakpoint == xs {
+    @include xs {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @include sm {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @include mobile {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @include tablet {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @include desktop {
+      @content;
+    }
+  } @else if $breakpoint == large {
+    @include large {
+      @content;
+    }
+  } @else if $breakpoint == xlarge {
+    @include xlarge {
+      @content;
+    }
+  } @else if $breakpoint == xxlarge {
+    @include xxlarge {
+      @content;
+    }
+  } @else if $breakpoint == xxxlarge {
+    @include xxxlarge {
+      @content;
+    }
+  }
+}

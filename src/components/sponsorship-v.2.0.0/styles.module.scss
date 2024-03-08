@@ -1,0 +1,169 @@
+@import '../../styles/colors';
+@import '../../styles/breakpoints';
+@import '../../styles/fonts';
+
+:root {
+  --gap: 1rem;
+}
+
+.sponsors__section {
+  // height: calc(100vh + 5px);
+  // background-color: $primary;
+  // border: 1px solid red;
+  // padding: 50px 0;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.sponsor__header {
+  &>h1 {
+    font-size: 2rem;
+    font-family: $open-sans;
+    font-weight: bolder;
+    color: $text-light;
+
+    @include max-media(480px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &>p {
+    color: $text-medium;
+    padding: 0 2rem;
+    margin: 0.75rem 0;
+
+    @include max-media(480px) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.lists__container {
+  --scroll-duration: 20s;
+  --gap-between-lists: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+
+  mask-image: linear-gradient(to right,
+      hsl(0 0% 0% / 0),
+      hsl(0 0% 0% / 1) 20%,
+      hsl(0 0% 0% / 1) 80%,
+      hsl(0 0% 0% / 0));
+
+  .li__wrapper {
+    // border: 2px solid red;
+    // outline: 2px solid greenyellow;
+    overflow-x: scroll;
+    color: white;
+    display: flex;
+
+    // overflow-y: hidden;
+    // scrollbar-width: 0;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    & .li__container {
+      display: flex;
+      // border: 1px solid red;
+      gap: var(--gap);
+      // & > li {
+      //   border: 1px solid yellow;
+      //   width: 10rem;
+      //   height: 50px;
+      // }
+
+      @include max-media(480px) {
+        gap: var(--gap);
+      }
+    }
+
+    & .li__container[data-direction='left'] {
+      animation: scrollBackward var(--scroll-duration) linear infinite;
+    }
+
+    & .li__container[data-direction='right'] {
+      animation: scrollForward var(--scroll-duration) linear infinite;
+    }
+  }
+}
+
+.sponsers__item__wrapper {
+  display: inline-block;
+  width: 12rem;
+  height: 200px;
+  // margin-right: 2rem;
+  padding: 1rem;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  .sponsers__item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .sponsor__image__container {
+      flex: 2;
+      max-height: 60%;
+      display: flex;
+      justify-content: center;
+
+      &>img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        filter: grayscale(1) brightness(1.25) contrast(0.5) saturate(0);
+      }
+    }
+
+    .sponsor__title__container {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &>p {
+        white-space: pre-wrap;
+
+        @include max-media(768px) {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  @include max-media(680px) {
+    width: 10rem;
+    height: 180px;
+  }
+}
+
+@keyframes scrollBackward {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollForward {
+  to {
+    transform: translateX(50%);
+  }
+}

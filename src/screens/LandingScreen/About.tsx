@@ -2,9 +2,9 @@ import React from 'react'
 
 const About = () => {
   return (
-    <section className='third-section h-screen bg-blue-950'>
+    <section className='third-section h-screen'>
    <main className="  ">
-        <div className=" ">
+        <div className="backdrop-blur-md h-screen w-screen">
           <div
             className="text-white font-pixelate text-[2rem] md:text-[3rem] font-bold my-2 mb-8  "
           
@@ -35,11 +35,12 @@ const About = () => {
           <div className="grid w-full grid-cols-1 md:grid-cols-8 gap-16">
             <div className="md:col-span-4 flex flex-col items-start justify-start order-2 md:order-1 ">
               <h2 className="mb-4  text-xl uppercase text-green-400 font-pixelate font-bold"> hi everyone</h2>
+              <span className="flex-none text-gray-200 opacity-85 font-bold tracking-wider pl-4">
               <p className="font-bold text-white font-pixelate">
                 {/* about binary content */}
                 Espektrois the annual cultural and technical spectacle hosted by Kalyani Government Engineering College. As West Bengal's second-largest fest, Espektro masterfully intertwines the realms of technology and creativity, setting the stage for a multifaceted celebration. Daytime activities buzz with the excitement of technical competitions and innovative games, drawing in budding engineers and tech enthusiasts alike. As dusk approaches, the ambiance shifts to a more artistic tone. Evenings come alive with mesmerizing performances from some of India's most distinguished artists, showcasing a blend of traditional and contemporary 
               </p>
-           
+              </span>
             </div>
             <div className="md:col-span-3 flex h-max  gap-4 order-1 md:order-2 items-center justify-center   ">
             

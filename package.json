@@ -13,6 +13,7 @@
     "@gsap/react": "^2.1.0",
     "@react-three/drei": "^9.99.5",
     "@react-three/fiber": "^8.15.16",
+    "@react-three/postprocessing": "^2.16.2",
     "framer-motion": "^11.0.6",
     "gltfjsx": "^6.2.16",
     "gsap": "^3.12.5",
