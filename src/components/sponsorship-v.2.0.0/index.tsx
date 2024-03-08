@@ -46,6 +46,7 @@ function SponsorSection(): React.JSX.Element {
   }, [forwardScrollWrapperRef.current]);
   return (
     <section id="espektro-past-sponsors" className={styles.sponsors__section}>
+      <div className='fourth-section'></div>
       <div className={styles.wrapper}>
         <div className={styles.sponsor__header}>
           <OutlinedHeading label="Our Sponsors" />

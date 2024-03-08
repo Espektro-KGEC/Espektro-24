@@ -8,7 +8,7 @@ Title: CyberCity_2099_V2
 */
 import React, { useLayoutEffect } from "react";
 import { useGLTF } from "@react-three/drei";
-import { useThree } from "react-three-fiber";
+import {  useThree } from "react-three-fiber";
 // import { useControls } from "leva";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -34,7 +34,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const tl = gsap.timeline();
   const { camera, scene } = useThree();
 
-  //----- used for getting the position for the shoes ----
+  // // ----- used for getting the position for the shoes ----
   // const { cameraPosition, scenePosition, sceneRotation } = useControls({
   // 	cameraPosition: {
   // 		value: {
@@ -59,9 +59,9 @@ const Scene: React.FC<SceneProps> = (props) => {
     new ScrollTrigger({});
     // component About.tsx
     tl.to(camera.position, {
-      x: 6.05,
-      y: -0.8,
-      z: -4.35,
+      x: 6.25,
+      y: -0.50,
+      z: -5.40,
       scrollTrigger: {
         trigger: ".second-section",
         start: "top bottom",
@@ -72,8 +72,8 @@ const Scene: React.FC<SceneProps> = (props) => {
     })
       .to(scene.position, {
         x: 5.5,
-        y: -1.55,
-        z: -6.9,
+        y:-1.60,
+        z: -6.90,
         scrollTrigger: {
           trigger: ".second-section",
           start: "top bottom",
@@ -98,9 +98,9 @@ const Scene: React.FC<SceneProps> = (props) => {
 
       // component - BuyNow.tsx
       .to(camera.position, {
-        x: 3.2,
-        y: -0.8,
-        z: -6.55,
+        x: 6.05,
+        y: -0.85,
+        z: -5.25,
         scrollTrigger: {
           trigger: ".third-section",
           start: "top bottom",
@@ -110,9 +110,9 @@ const Scene: React.FC<SceneProps> = (props) => {
         },
       })
       .to(scene.position, {
-        x: 3.2,
-        y: -1.85,
-        z: -8.0,
+        x: 6.90,
+        y: -1.55,
+        z: -6.30,
         scrollTrigger: {
           trigger: ".third-section",
           start: "top bottom",
@@ -122,9 +122,9 @@ const Scene: React.FC<SceneProps> = (props) => {
         },
       })
       .to(scene.rotation, {
-        x: 0.17,
-        y: -0.21,
-        z: -0.01,
+        x: -0.12,
+        y: -0.62,
+        z: 0.03,
         scrollTrigger: {
           trigger: ".third-section",
           start: "top bottom",

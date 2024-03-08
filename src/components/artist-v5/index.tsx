@@ -52,6 +52,7 @@ const ArtistSection = () => {
   });
 
   return (
+    <div className='third-section'>
     <div
       className={styles.main_container}
       ref={mainContentRef}
@@ -64,7 +65,7 @@ const ArtistSection = () => {
           return <ArtistCard key={index} id={item.id} imageUrl={item.url} />;
         })}
       </div>
-    </div>
+    </div></div>
   );
 };
 function ArtistCard({ id, imageUrl }: { id: string; imageUrl: string }) {

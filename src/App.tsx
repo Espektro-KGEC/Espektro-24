@@ -5,7 +5,7 @@ import {
   Routes,
 } from 'react-router';
 
-import Layout from '@components/PageLayout/Layout';
+// import Layout from '@components/PageLayout/Layout';
 // import lazy from '@components/Lazy-loading/lazy_loading';
 import EventsPage from './screens/EventsScreen/EventsPage';
 import LandingPage from './screens/LandingScreen/LandingPage';
