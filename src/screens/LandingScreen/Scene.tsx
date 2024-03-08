@@ -513,4 +513,4 @@ const Scene: React.FC<SceneProps> = (props) => {
 };
 export default Scene;
 
-// useGLTF.preload("/scene.gltf");
+useGLTF.preload("/scene.gltf");

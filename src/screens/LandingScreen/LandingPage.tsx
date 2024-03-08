@@ -1,12 +1,8 @@
-import React, { Suspense, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Canvas } from "react-three-fiber";
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
-
-// import "./styles.module.css"; // Import your Tailwind CSS styles
-
-// Import other necessary components here
 import Preloadpage from "./Preloadanim";
 import Hero from "./Hero";
 import About from "./About";
@@ -20,8 +16,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage: React.FC = () => {
   const aboutRef = useRef(null);
+  const [scrollEnabled, setScrollEnabled] = useState(false);
 
   useEffect(() => {
+    // Scroll to the top of the page when the component mounts
+    window.scrollTo(0, 0);
+
     gsap.to('.blur-effect', {
       scrollTrigger: {
         trigger: aboutRef.current,
@@ -31,11 +31,28 @@ const LandingPage: React.FC = () => {
       blur: 10, // adjust blur amount as needed
       duration: 1, // duration of the blur effect
     });
+
+    // Enable scrolling after 9 seconds
+    const timeout = setTimeout(() => {
+      setScrollEnabled(true);
+    }, 6000);
+
+    return () => clearTimeout(timeout);
   }, []);
+
+  useEffect(() => {
+    // Disable scrolling for 6 seconds
+    if (!scrollEnabled) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Enable scrolling and make screen absolute
+      document.body.style.overflow = 'auto';
+      document.body.style.position = 'relative';
+    }
+  }, [scrollEnabled]);
 
   return (
     <div>
-      <Preloadpage />
       <div className="relative">
         <div className="fixed top-0 left-0 w-full h-full">
           <Canvas>
@@ -53,7 +70,7 @@ const LandingPage: React.FC = () => {
           <Hero />
           <div className="z-30" ref={aboutRef}>
             <About />
-            <div>
+            <div className="">
               <ArtistSection/>
               <div>
                 <SponsorSection/>
@@ -63,7 +80,7 @@ const LandingPage: React.FC = () => {
           <EventGo />
         </div>
       </div>
-      <div className="fixed inset-0 z-50 pointer-events-none">
+      <div className="fixed inset-0 z-40 pointer-events-none">
         <Canvas camera={{ fov: 75, position: [0, 0, 0] }}>
           <ambientLight intensity={2} />
           <pointLight position={[40, 40, 40]} />
@@ -73,6 +90,8 @@ const LandingPage: React.FC = () => {
           </Suspense>
         </Canvas>
       </div>
+      <div className="z-50">
+      <Preloadpage /></div>
     </div>
   );
 };

@@ -993,4 +993,4 @@ const Robot1: React.FC<SceneProps> = (props) => {
 };
 
 export default Robot1;
-// useGLTF.preload("/robo1.gltf");
+useGLTF.preload("/robo1.gltf");
