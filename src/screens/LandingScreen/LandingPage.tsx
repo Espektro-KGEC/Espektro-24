@@ -11,6 +11,8 @@ import Scene from "./Scene";
 import Robot1 from "./Robo1";
 import ArtistSection from "@/components/artist-v5";
 import SponsorSection from "@/components/sponsorship-v.2.0.0";
+import ClubComponent from "@/components/clubs";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,13 +76,18 @@ const LandingPage: React.FC = () => {
               <ArtistSection/>
               <div>
                 <SponsorSection/>
+                <div>
+                  <ClubComponent/>
+                </div>
               </div>
             </div>
           </div>
           <EventGo />
         </div>
       </div>
-      <div className="fixed inset-0 z-40 pointer-events-none">
+      <motion.div initial={{x:"-100%"}}
+      animate={{x:"0%"}}
+      transition={{duration:3}} className="fixed inset-0 z-40 pointer-events-none">
         <Canvas camera={{ fov: 75, position: [0, 0, 0] }}>
           <ambientLight intensity={2} />
           <pointLight position={[40, 40, 40]} />
@@ -89,7 +96,7 @@ const LandingPage: React.FC = () => {
             <Robot1 scale={4} />
           </Suspense>
         </Canvas>
-      </div>
+      </motion.div>
       <div className="z-50">
       <Preloadpage /></div>
     </div>
