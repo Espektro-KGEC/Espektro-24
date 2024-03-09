@@ -13,6 +13,8 @@ import ArtistSection from "@/components/artist-v5";
 import SponsorSection from "@/components/sponsorship-v.2.0.0";
 import ClubComponent from "@/components/clubs";
 import { motion } from "framer-motion";
+import Scene2 from "./Scene2";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,18 +58,18 @@ const LandingPage: React.FC = () => {
   return (
     <div>
       <div className="relative">
-        {/* <div className="fixed top-0 left-0 w-full h-full">
+        <div className="fixed top-0 left-0 w-full h-full">
           <Canvas>
-            <color attach="background" args={["#050505"]} />
+            {/* <color attach="background" args={["#050505"]} /> */}
             <ambientLight intensity={0.1} />
             <Suspense fallback={null}>
-              <Scene scale={0.0001} className="blur-effect" />
+              <Scene2 scale={4} className="blur-effect" />
               <EffectComposer enableNormalPass multisampling={8}>
                 <Bloom luminanceThreshold={0} mipmapBlur luminanceSmoothing={1.0} intensity={1} />
               </EffectComposer>
             </Suspense>
           </Canvas>
-        </div> */}
+        </div>
         <div className="relative z-10">
           <Hero />
           <div className="z-30" ref={aboutRef}>
