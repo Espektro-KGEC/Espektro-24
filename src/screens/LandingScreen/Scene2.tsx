@@ -7,7 +7,7 @@ Source: https://sketchfab.com/3d-models/cyberpunk-city-1-14d2eaa145ee42938e00411
 Title: Cyberpunk City - #1
 */
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 interface CustomNodes {
