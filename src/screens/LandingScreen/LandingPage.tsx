@@ -56,7 +56,7 @@ const LandingPage: React.FC = () => {
     <div>
       <div className="relative">
         <div className="fixed top-0 left-0 w-full h-full">
-          <Canvas camera={{ fov: 75, position: [0, 0, 0] }} framework="demand" performance={{ min: 0.5 }}>
+          <Canvas camera={{ fov: 75, position: [0, 0, 0] }}  performance={{ min: 0.5 }}>
             <color attach="background" args={["#050505"]} />
             <ambientLight intensity={0.1} />
             <Suspense fallback={null}>
@@ -90,7 +90,7 @@ const LandingPage: React.FC = () => {
       <motion.div initial={{ x: "-100%" }}
         animate={{ x: "0%" }}
         transition={{ duration: 3 }} className="fixed inset-0 z-40 pointer-events-none">
-        <Canvas camera={{ fov: 75, position: [0, 0, 0] }} framework="demand" performance={{ min: 0.5 }}>
+        <Canvas camera={{ fov: 75, position: [0, 0, 0] }}  performance={{ min: 0.5 }}>
           <ambientLight intensity={2} />
           <pointLight position={[40, 40, 40]} />
           <directionalLight position={[40, 40, 40]} />
