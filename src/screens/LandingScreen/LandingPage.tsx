@@ -60,7 +60,7 @@ const LandingPage: React.FC = () => {
       <div className="relative">
         <div className="fixed top-0 left-0 w-full h-full">
           <Canvas>
-            {/* <color attach="background" args={["#050505"]} /> */}
+            <color attach="background" args={["#050505"]} />
             <ambientLight intensity={0.1} />
             <Suspense fallback={null}>
               <Scene2 scale={4} className="blur-effect" />

@@ -6,9 +6,12 @@ License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 Source: https://sketchfab.com/3d-models/cyberpunk-city-1-14d2eaa145ee42938e004115871adf6c
 Title: Cyberpunk City - #1
 */
-
-import React from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useLayoutEffect } from "react";
+import { useGLTF } from "@react-three/drei";
+import {  useThree } from "react-three-fiber";
+import { useControls } from "leva";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface CustomNodes {
   [key: string]: {
@@ -27,6 +30,162 @@ const Scene2: React.FC<SceneProps> = (props) => {
     nodes: CustomNodes;
     materials: any;
   };
+
+  const tl = gsap.timeline();
+  const { camera, scene } = useThree();
+
+  // // ----- used for getting the position for the shoes ----
+  // const { cameraPosition, scenePosition, sceneRotation } = useControls({
+  // 	cameraPosition: {
+  // 		value: {
+  // 			x: 6.05,
+  // 			y: -0.80,
+  // 			z: -4.35,
+  // 		},
+  // 		step: 0.05,
+  // 	},
+  // 	scenePosition: {
+  // 		value: { x:   5.50, y: -1.55, z: -6.90 },
+  // 		step: 0.05,
+  // 	},
+
+  // 	sceneRotation: {
+  // 		value: { x: 0.08, y: -0.30, z: 0.03 },
+  // 		step: 0.01,
+  // 	},
+  // });
+
+  useLayoutEffect(() => {
+    new ScrollTrigger({});
+    // component About.tsx
+    tl.to(camera.position, {
+      x: 6.25,
+      y: -0.50,
+      z: -5.40,
+      scrollTrigger: {
+        trigger: ".second-section",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+        immediateRender: false,
+      },
+    })
+      .to(scene.position, {
+        x: 5.5,
+        y:-1.60,
+        z: -6.90,
+        scrollTrigger: {
+          trigger: ".second-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+      .to(scene.rotation, {
+        x: 0.08,
+        y: -0.3,
+        z: 0.03,
+        scrollTrigger: {
+          trigger: ".second-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+      // component - BuyNow.tsx
+      .to(camera.position, {
+        x: 6.05,
+        y: -0.85,
+        z: -5.25,
+        scrollTrigger: {
+          trigger: ".third-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      .to(scene.position, {
+        x: 6.90,
+        y: -1.55,
+        z: -6.30,
+        scrollTrigger: {
+          trigger: ".third-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      .to(scene.rotation, {
+        x: -0.12,
+        y: -0.62,
+        z: 0.03,
+        scrollTrigger: {
+          trigger: ".third-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+      .to(camera.position, {
+        x: 6.05,
+        y: -0.2,
+        z: -6.6,
+        scrollTrigger: {
+          trigger: ".fourth-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      .to(scene.position, {
+        x: 5.35,
+        y: -1.55,
+        z: -7.3,
+        scrollTrigger: {
+          trigger: ".fourth-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+      .to(scene.rotation, {
+        x: -0.02,
+        y: -1.52,
+        z: 0.0,
+        scrollTrigger: {
+          trigger: ".fourth-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      });
+  }, []);
+
+  // useFrame(() => {
+  // 	camera.position.x = cameraPosition.x;
+  // 	camera.position.y = cameraPosition.y;
+  // 	camera.position.z = cameraPosition.z;
+  // 	scene.position.x = scenePosition.x;
+  // 	scene.position.y = scenePosition.y;
+  // 	scene.position.z = scenePosition.z;
+  // 	scene.rotation.x = sceneRotation.x;
+  // 	scene.rotation.y = sceneRotation.y;
+  // 	scene.rotation.z = sceneRotation.z;
+  // });
+
+
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0.449}>
