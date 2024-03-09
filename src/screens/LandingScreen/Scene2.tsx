@@ -9,7 +9,7 @@ Title: Cyberpunk City - #1
 import React, { useLayoutEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import {  useThree } from "react-three-fiber";
-import { useControls } from "leva";
+// import { useControls } from "leva";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
