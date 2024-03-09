@@ -12,7 +12,7 @@ import LandingPage from './screens/LandingScreen/LandingPage';
 import ComingSoon from './components/ComingSoon/ComingSoon';
 import Blank from './components/Blank';
 
-const LazyloadDelay = 4000;
+const LazyloadDelay = 3000;
 const HomeScreen = lazy(() =>
   delay(LazyloadDelay).then(() => import('./components/PageLayout/Layout'))
 );
