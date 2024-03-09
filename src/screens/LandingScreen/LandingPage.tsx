@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef, Suspense } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Canvas } from "react-three-fiber";
-// import { EffectComposer, Bloom } from '@react-three/postprocessing';
+import { useMediaQuery } from 'react-responsive';
 import Preloadpage from "./Preloadanim";
 import Hero from "./Hero";
 import About from "./About";
 import EventGo from "./EventGo";
-// import Scene from "./Scene";
 import Robot1 from "./Robo1";
+import Robot2 from "./Robo2";
 import ArtistSection from "@/components/artist-v5";
 import SponsorSection from "@/components/sponsorship-v.2.0.0";
 import ClubComponent from "@/components/clubs";
@@ -21,22 +21,21 @@ gsap.registerPlugin(ScrollTrigger);
 const LandingPage: React.FC = () => {
   const aboutRef = useRef(null);
   const [scrollEnabled, setScrollEnabled] = useState(false);
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   useEffect(() => {
-    // Scroll to the top of the page when the component mounts
     window.scrollTo(0, 0);
 
     gsap.to('.blur-effect', {
       scrollTrigger: {
         trigger: aboutRef.current,
-        start: "top 50%", // adjust this value according to your layout
+        start: "top 50%",
         toggleActions: "play none none reverse",
       },
-      blur: 10, // adjust blur amount as needed
-      duration: 1, // duration of the blur effect
+      blur: 10,
+      duration: 1,
     });
 
-    // Enable scrolling after 9 seconds
     const timeout = setTimeout(() => {
       setScrollEnabled(true);
     }, 6000);
@@ -45,11 +44,9 @@ const LandingPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Disable scrolling for 6 seconds
     if (!scrollEnabled) {
       document.body.style.overflow = 'hidden';
     } else {
-      // Enable scrolling and make screen absolute
       document.body.style.overflow = 'auto';
       document.body.style.position = 'relative';
     }
@@ -59,7 +56,7 @@ const LandingPage: React.FC = () => {
     <div>
       <div className="relative">
         <div className="fixed top-0 left-0 w-full h-full">
-          <Canvas>
+          <Canvas camera={{ fov: 75, position: [0, 0, 0] }} framework="demand" performance={{ min: 0.5 }}>
             <color attach="background" args={["#050505"]} />
             <ambientLight intensity={0.1} />
             <Suspense fallback={null}>
@@ -75,11 +72,14 @@ const LandingPage: React.FC = () => {
           <div className="z-30" ref={aboutRef}>
             <About />
             <div className="">
-              <ArtistSection/>
+              <ArtistSection />
               <div>
-                <SponsorSection/>
+                <SponsorSection />
                 <div>
-                  <ClubComponent/>
+                  <ClubComponent />
+                  <div>
+                    {/* <HeroSection/> */}
+                  </div>
                 </div>
               </div>
             </div>
@@ -87,20 +87,21 @@ const LandingPage: React.FC = () => {
           <EventGo />
         </div>
       </div>
-      <motion.div initial={{x:"-100%"}}
-      animate={{x:"0%"}}
-      transition={{duration:3}} className="fixed inset-0 z-40 pointer-events-none">
-        <Canvas camera={{ fov: 75, position: [0, 0, 0] }}>
+      <motion.div initial={{ x: "-100%" }}
+        animate={{ x: "0%" }}
+        transition={{ duration: 3 }} className="fixed inset-0 z-40 pointer-events-none">
+        <Canvas camera={{ fov: 75, position: [0, 0, 0] }} framework="demand" performance={{ min: 0.5 }}>
           <ambientLight intensity={2} />
           <pointLight position={[40, 40, 40]} />
           <directionalLight position={[40, 40, 40]} />
           <Suspense fallback={null}>
-            <Robot1 scale={4} />
+            {isMobile ? <Robot2 scale={2} /> : <Robot1 scale={4} />}
           </Suspense>
         </Canvas>
       </motion.div>
       <div className="z-50">
-      <Preloadpage /></div>
+        <Preloadpage />
+      </div>
     </div>
   );
 };

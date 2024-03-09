@@ -8,7 +8,7 @@ Title: Cyberpunk City - #1
 */
 import React, { useLayoutEffect } from "react";
 import { useGLTF } from "@react-three/drei";
-import {   useThree } from "react-three-fiber";
+import {    useThree } from "react-three-fiber";
 // import { useControls } from "leva";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -111,9 +111,9 @@ const Scene2: React.FC<SceneProps> = (props) => {
         },
       })
       .to(scene.position, {
-        x: -0.75,
-        y: -1.25,
-        z: 2.50,
+        x: 0,
+        y: -0.3,
+        z: 0,
         scrollTrigger: {
           trigger: ".third-section",
           start: "top bottom",
@@ -124,7 +124,7 @@ const Scene2: React.FC<SceneProps> = (props) => {
       })
       .to(scene.rotation, {
         x: 0,
-        y: 0.58,
+        y:-0.41,
         z: 0,
         scrollTrigger: {
           trigger: ".third-section",
@@ -134,6 +134,8 @@ const Scene2: React.FC<SceneProps> = (props) => {
           immediateRender: false,
         },
       })
+
+// fourth section
 
       .to(camera.position, {
         x: 0,
@@ -148,9 +150,9 @@ const Scene2: React.FC<SceneProps> = (props) => {
         },
       })
       .to(scene.position, {
-        x:-8.25,
-        y: -2.60,
-        z: -3.90,
+        x: 0,
+        y: -0.30,
+        z: 0,
         scrollTrigger: {
           trigger: ".fourth-section",
           start: "top bottom",
@@ -162,10 +164,130 @@ const Scene2: React.FC<SceneProps> = (props) => {
 
       .to(scene.rotation, {
         x: 0,
-        y: -1.22,
+        y: -0.27,
         z: 0,
         scrollTrigger: {
           trigger: ".fourth-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+// fifth section
+
+        .to(camera.position, {
+        x: 0,
+        y: 0,
+        z: 0,
+        scrollTrigger: {
+          trigger: ".fifth-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      .to(scene.position, {
+        x: 0,
+        y: -1.05,
+        z: 1.20,
+        scrollTrigger: {
+          trigger: ".fifth-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+      .to(scene.rotation, {
+        x: 0,
+        y: 0.17,
+        z: 0,
+        scrollTrigger: {
+          trigger: ".fifth-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+// sixth-section
+
+        .to(camera.position, {
+        x: 0,
+        y: 0,
+        z: 0,
+        scrollTrigger: {
+          trigger: ".sixth-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      .to(scene.position, {
+        x: 0,
+        y: -1.15,
+        z: 1.40,
+        scrollTrigger: {
+          trigger: ".sixth-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+      .to(scene.rotation, {
+        x: 0,
+        y: -0.17,
+        z: 0,
+        scrollTrigger: {
+          trigger: ".sixth-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+// seventh section
+
+      .to(camera.position, {
+        x: 0,
+        y: 0,
+        z: 0,
+        scrollTrigger: {
+          trigger: ".seventh-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      .to(scene.position, {
+        x: 0,
+        y: -1.15,
+        z: 1.55,
+        scrollTrigger: {
+          trigger: ".seventh-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+      .to(scene.rotation, {
+        x: 0,
+        y: -0.27,
+        z: 0,
+        scrollTrigger: {
+          trigger: ".seventh-section",
           start: "top bottom",
           end: "top top",
           scrub: true,
@@ -188,8 +310,8 @@ const Scene2: React.FC<SceneProps> = (props) => {
 
 
   return (
-    <group {...props} dispose={null}  position={[7.00, -3.65, 4.00]}
-    rotation={[0, -3.54, 0]}>
+    <group {...props} dispose={null}  position={[7.10, -3.15,5.00]}
+    rotation={[0, -3.67, 0]}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0.449}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group rotation={[Math.PI / 2, 0, 0]} scale={0.015}>

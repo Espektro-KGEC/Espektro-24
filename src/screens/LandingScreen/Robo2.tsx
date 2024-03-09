@@ -24,7 +24,7 @@ interface SceneProps {
   // Define props here if your component accepts any
 }
 
-const Robot1: React.FC<SceneProps> = (props) => {
+const Robot2: React.FC<SceneProps> = (props) => {
   const group = useRef<Group>(null);
   // const { nodes, materials, animations } = useGLTF("/robo1.gltf");
   const { nodes, materials, animations } = useGLTF(
@@ -42,7 +42,7 @@ const Robot1: React.FC<SceneProps> = (props) => {
   
   // const [scrollEnabled, setScrollEnabled] = useState(false);
 
-  //----- used for getting the position for the shoes ----
+  // // ----- used for getting the position for the shoes ----
   // const { cameraPosition, scenePosition, sceneRotation } = useControls({
   //   cameraPosition: {
   //     value: {
@@ -196,9 +196,9 @@ const Robot1: React.FC<SceneProps> = (props) => {
         },
       })
       .to(scene.position, {
-        x: -0.65,
-        y: -0.10,
-        z: -0.25,
+        x: 3.0,
+        y: 0.35,
+        z: 0,
         scrollTrigger: {
           trigger: ".third-section",
           start: "top bottom",
@@ -209,7 +209,7 @@ const Robot1: React.FC<SceneProps> = (props) => {
       })
       .to(scene.rotation, {
         x: 0,
-        y: -1.65,
+        y: 0.63,
         z: 0.0,
         scrollTrigger: {
           trigger: ".third-section",
@@ -220,50 +220,9 @@ const Robot1: React.FC<SceneProps> = (props) => {
         },
       })
 
-//fourth section
-
+      // fourth section
       .to(camera.position, {
-        x: 0.0,
-        y: 0,
-        z: 0,
-        scrollTrigger: {
-          trigger: ".fourth-section",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
-          immediateRender: false,
-        },
-      })
-      .to(scene.position, {
-        x: 1.40,
-        y: 0.20,
-        z: -0.25,
-        scrollTrigger: {
-          trigger: ".fourth-section",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
-          immediateRender: false,
-        },
-      })
-
-      .to(scene.rotation, {
-        x: 0.0,
-        y:-1.65,
-        z: 0.0,
-        scrollTrigger: {
-          trigger: ".fourth-section",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
-          immediateRender: false,
-        },
-      })
-
-//seventh-section
-
-      .to(camera.position, {
-        x: 0.0,
+        x: 0,
         y: 0,
         z: 0,
         scrollTrigger: {
@@ -275,9 +234,9 @@ const Robot1: React.FC<SceneProps> = (props) => {
         },
       })
       .to(scene.position, {
-        x: -0.05,
-        y: 0.05,
-        z: 0.40,
+        x: 0,
+        y: 0.50,
+        z: 0,
         scrollTrigger: {
           trigger: ".seventh-section",
           start: "top bottom",
@@ -289,7 +248,7 @@ const Robot1: React.FC<SceneProps> = (props) => {
 
       .to(scene.rotation, {
         x: 0.0,
-        y:-0.54,
+        y: 0,
         z: 0.0,
         scrollTrigger: {
           trigger: ".seventh-section",
@@ -321,8 +280,8 @@ const Robot1: React.FC<SceneProps> = (props) => {
       ref={group}
       {...props}
       dispose={null}
-      position={[-0.65, -0.5, -1.2]}
-      rotation={[0, 0.61, 0]}
+      position={[0.00, -0.55, -1.0]}
+      rotation={[0, 0.08, 0]}
     >
       <group name="Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
@@ -1036,5 +995,5 @@ const Robot1: React.FC<SceneProps> = (props) => {
   );
 };
 
-export default Robot1;
+export default Robot2;
 useGLTF.preload("/robo1.gltf");

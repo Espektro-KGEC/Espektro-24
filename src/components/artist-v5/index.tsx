@@ -52,7 +52,7 @@ const ArtistSection = () => {
   });
 
   return (
-    <div className='third-section'>
+    <div className='fourth-section'>
     <div
       className={styles.main_container}
       ref={mainContentRef}

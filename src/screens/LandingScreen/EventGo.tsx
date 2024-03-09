@@ -2,7 +2,7 @@
 
 const EventGo = () => {
   return (
-    <section className='fourth-section h-screen '>
+    <section className='seventh-section h-screen '>
       event go
     </section>
   )

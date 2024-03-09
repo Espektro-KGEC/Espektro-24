@@ -97,6 +97,7 @@ const CLUBS = [
 
 function ClubComponent() {
   return (
+    <div className='sixth-section'>
     <section id="espektro-clubs" className={styles.ClubComponent__section}>
       <OutlinedHeading label="Our Clubs" />
       <div className={styles.ClubComponent__section__club__wrapper}>
@@ -121,7 +122,7 @@ function ClubComponent() {
           })}
         </ul>
       </div>
-    </section>
+    </section></div>
   );
 }
 
