@@ -56,7 +56,7 @@ const LandingPage: React.FC = () => {
   return (
     <div>
       <div className="relative">
-        <div className="fixed top-0 left-0 w-full h-full">
+        {/* <div className="fixed top-0 left-0 w-full h-full">
           <Canvas>
             <color attach="background" args={["#050505"]} />
             <ambientLight intensity={0.1} />
@@ -67,7 +67,7 @@ const LandingPage: React.FC = () => {
               </EffectComposer>
             </Suspense>
           </Canvas>
-        </div>
+        </div> */}
         <div className="relative z-10">
           <Hero />
           <div className="z-30" ref={aboutRef}>
